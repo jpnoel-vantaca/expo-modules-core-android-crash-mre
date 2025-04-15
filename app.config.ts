@@ -41,6 +41,7 @@ export default ({ config }: ConfigContext) => {
 			},
 		},
 		plugins: [
+			['./expo-plugins/with-custom-app-build-gradle.js'],
 			['expo-font'],
 			['expo-localization'],
 			['expo-router', { root: './src/app/' }],
