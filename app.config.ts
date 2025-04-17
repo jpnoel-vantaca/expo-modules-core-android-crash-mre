@@ -1,5 +1,8 @@
 import { ExpoConfig, ConfigContext } from 'expo/config';
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
+
+const bundleId = 'com.vantaca.home.crashtest';
+const buildVersion = readFileSync('./build-version.txt').toString().trim();
 
 const androidBuildProperties = {
 	minSdkVersion: 24,
@@ -19,18 +22,18 @@ export default ({ config }: ConfigContext) => {
 		newArchEnabled: true,
 		slug: 'expo-modules-android-crash-mre',
 		icon: './src/assets/images/icon.png',
-		scheme: 'emcaac.mre',
+		scheme: 'vantaca.com',
 		android: {
-			package: 'com.emac.mre',
+			package: bundleId,
 			allowBackup: true,
-			versionCode: 1,
+			versionCode: parseInt(buildVersion),
 			permissions: [
 				'android.permission.READ_MEDIA_IMAGES',
 			],
 		},
 		ios: {
-			bundleIdentifier: 'com.emac.mre',
-			buildNumber: '1',
+			bundleIdentifier: bundleId,
+			buildNumber: buildVersion,
 			supportsTablet: true,
 			config: {
 				usesNonExemptEncryption: false,

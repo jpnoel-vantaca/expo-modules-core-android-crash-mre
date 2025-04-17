@@ -38,3 +38,4 @@ yarn-error.*
 app-example
 /app.config.snapshot.json
 /android
+/tmp
